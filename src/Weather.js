@@ -46,8 +46,7 @@ export default function Weather(props) {
           <li>Humidity: {weather.humidity}%</li>
           <li>Wind: {weather.wind}km/h</li>
         </ul>
-      </div>
-      <p>This project was coded by Adele McKenna and is open-sourced on Github</p>
+      This project was coded by Adele McKenna and is open-sourced on <a href="https://github.com/space-ventura/weather-reactGithub" target="_blank">Github</a></div>
     );
   } else {
     return form;
