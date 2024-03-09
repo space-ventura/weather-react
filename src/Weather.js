@@ -1,54 +1,53 @@
 import React, { useState } from "react";
+import "./Weather.css"
 import axios from "axios";
 
 export default function Weather(props) {
-  const [city, setCity] = useState("");
-  const [loaded, setLoaded] = useState(false);
-  const [weather, setWeather] = useState({});
+function handleResponse (response) {
+console.log(response.data)
+}
 
-  function showTemperature(response) {
-    setLoaded(true);
-    setWeather({
-      temperature: response.data.main.temp,
-      wind: response.data.wind.speed,
-      humidity: response.data.main.humidity,
-      icon: "",
-    });
-  }
-
-  function handleSubmit(event) {
-    event.preventDefault();
-    let url = `https://api.openweathermap.org/data/2.5/weather?q=${city}&appid=8cac06f7ab6c10287cd06a316ff84a57&units=metric`;
-    axios.get(url).then(showTemperature);
-  }
-
-  function updateCity(event) {
-    setCity(event.target.value);
-  }
-
-  let form = (
-    <form onSubmit={handleSubmit}>
-      <input
-        type="search"
-        placeholder="Enter city name"
-        onChange={updateCity}
-      />
-      <button type="submit">Search</button>
-    </form>
-  );
-
-  if (loaded) {
-    return (
-      <div>
-        {form}
-        <ul>
-          <li>Temperature: {Math.round(weather.temperature)}°C</li>
-          <li>Humidity: {weather.humidity}%</li>
-          <li>Wind: {weather.wind}km/h</li>
-        </ul>
+  const apiKey="1dbf926d3b4417bf379db7043bec1047";
+let city="London";
+let apiUrl=`https://api.openweathermap.org/data/2.5/weather?q=${city}&appid=${apiKey}&units=metric`;
+axios.get(apiUrl).then(handleResponse);
+  return (
+      <div className="Weather">
+        <form>
+          <div className="row">
+            <div className="col-9">
+          <input type="search" placeholder="Enter a City..." className="form-control" autoFocus="on"/>
       </div>
-    );
-  } else {
-    return form;
-  }
+      <div className="col-3">
+        <input type="submit" value="Search" className="btn btn-primary w-100"/>
+      </div>
+       </div>
+        </form>
+        <h1>Philadelphia</h1>
+        <ul>
+          <li>Wednesday 07:00</li>
+          <li>Mostly Cloudy</li>
+        </ul>
+        <div className="row mt-3">
+          <div className="col-6">
+           <div className="clearfix">
+            <img src="https://ssl.gstatic.com/onebox/weather/64/cloudy.png" alt="Mostly Cloudy" className="float-left"/>
+       
+            <span className="temperature">6</span>
+         <span className="unit">°C</span>
+    
+         </div>
+          </div>
+          <div className="col-6">
+            <ul>
+              <li>
+                Precipitation 15%
+              </li>
+              <li>Humidity: 72%</li>
+              <li>Wind Speed: 13 km/h</li>
+            </ul>
+          </div>
+        </div>
+        </div>
+        )
 }
