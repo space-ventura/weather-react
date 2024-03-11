@@ -6,7 +6,7 @@ export default function App() {
   return (
     <div className="App">
       <div className="container">
-         <Weather />
+         <Weather defaultCity="Philadelphia"/>
       <footer>This project was coded by Adele McKenna and is open-sourced on{" "}
         <a
           href="https://github.com/space-ventura/weather-reactGithub"
