@@ -15,7 +15,7 @@ return (
         </ul>
         <div className="row mt-3">
           <div className="col-6">
-           <div className="clearfix">
+           <div className="d-flex">
             <div className="float-left">
            <WeatherIcon code={props.data.icon}/>
            </div>
