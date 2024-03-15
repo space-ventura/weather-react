@@ -31,5 +31,5 @@ let days = ["Sun" , "Mon" , "Tue" , "Wed" , "Thu" , "Fri" , "Sat"];
             <span className="WeatherForecast-temperature-min">{minTemperature()}</span>
           </div>
           </div>
-  )
+  );
 }
